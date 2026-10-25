@@ -1,0 +1,42 @@
+/* Flappy đối kháng: dùng token --g-* của game-skin nên tự theo sáng/tối. */
+.flappy-dialog{width:min(94vw,780px)}
+.flappy-card .flappy-bird-emoji{font-size:34px;line-height:1}
+.fl-ready{display:grid;gap:8px;margin:14px 0}
+.fl-ready-row{display:flex;align-items:center;gap:10px;background:var(--g-bg);border:1px solid var(--g-line);border-radius:14px;padding:12px 14px;font-weight:600}
+.fl-ready-row.done{border-color:var(--g-green);color:var(--g-green)}
+.fl-final-score{font-size:17px;font-weight:800;margin-top:8px}
+/* Sân bay luôn chia dọc 2 nửa cạnh nhau — kể cả trên điện thoại.
+   minmax(0,1fr) + min-width:0 để tên người chơi dài không làm phình cột. */
+.flappy-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:6px}
+.flappy-half{min-width:0}
+.flappy-panel{min-width:0}
+.flappy-stage{position:relative;margin-top:6px}
+.flappy-stage .flappy-split{margin-top:0}
+/* Số đếm ngược phủ ngay trên sân bay để người chơi sẵn tay vỗ cánh. */
+.fl-count-overlay{position:absolute;inset:0;z-index:5;display:grid;place-items:center;background:rgba(10,12,30,.45);border-radius:18px;pointer-events:none}
+.fl-count-overlay #flCount{font-size:110px;font-weight:900;color:#fff;line-height:1;letter-spacing:2px;text-shadow:0 12px 44px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
+@media(max-width:600px){
+ .flappy-dialog{width:97vw}
+ .flappy-split{gap:7px}
+ .flappy-panel{padding:7px;border-radius:14px}
+ .flappy-panel-head{gap:6px;margin-bottom:6px}
+ .flappy-panel-head .avatar{width:26px;height:26px}
+ .flappy-panel-head b{font-size:12px}
+ .flappy-panel-head small{display:none}
+ .flappy-score{font-size:12px}
+ .fl-flap{margin-top:7px;font-size:14px;padding:10px 4px}
+ .flappy-half.peer .fine{display:none}
+ .fl-count-overlay #flCount{font-size:56px}
+}
+.flappy-panel{background:var(--g-bg);border:1px solid var(--g-line);border-radius:18px;padding:10px}
+.flappy-half.mine .flappy-panel{border-color:var(--g-purple)}
+.flappy-panel-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.flappy-panel-head .avatar{width:34px;height:34px;flex:none}
+.flappy-panel-head .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.flappy-panel-head span{flex:1;min-width:0}
+.flappy-panel-head b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flappy-panel-head small{color:var(--g-muted);font-size:11px}
+.flappy-score{font-size:15px;color:var(--g-purple);white-space:nowrap}
+.flappy-panel canvas{width:100%;height:auto;display:block;border-radius:12px;background:#7ec8f7;cursor:pointer;touch-action:manipulation}
+.fl-flap{margin-top:10px;font-size:17px;padding:13px}
+.flappy-half.peer .fine{text-align:center;margin:8px 0 0}

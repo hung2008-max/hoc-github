@@ -1,0 +1,73 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#5145e8"><meta name="author" content="HUNGKNGU"><title>hungstrikes — Cùng nhau tốt hơn</title><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Chuỗi"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="stylesheet" href="app.css"><script defer src="config.js?v=4.11.2"></script><script defer src="release.js?v=4.11.2"></script><script defer src="tracker-template.js?v=4.7.0"></script><script defer src="chat-view.js?v=4.7.0"></script><script defer src="app.js?v=4.7.0"></script><script defer src="game-realtime.js?v=4.7.2"></script><script defer src="game-ui.js?v=4.7.2"></script><script defer src="highlow.js?v=4.7.1"></script>
+<script defer src="flappy.js?v=4.8.0"></script><script defer src="voice.js?v=4.7.0"></script>
+<script defer src="call.js?v=4.9.0"></script><script defer src="social.js?v=4.7.2"></script><link rel="stylesheet" href="social.css?v=4.7.0"><script defer src="groups.js?v=4.7.0"></script>
+<script defer src="groupcall.js?v=4.11.2"></script><script defer src="notification-core.js"></script><script defer src="notifications.js?v=4.10.0"></script><link rel="stylesheet" href="notifications.css"><link rel="stylesheet" href="groups.css?v=4.7.0"><link rel="stylesheet" href="games-ui.css?v=4.7.0"><link rel="stylesheet" href="chat-smooth.css?v=4.7.0">
+<link rel="stylesheet" href="call.css?v=4.7.0">
+<link rel="stylesheet" href="groupcall.css?v=4.11.2"><link rel="stylesheet" href="highlow-clear.css?v=4.7.1">
+<link rel="stylesheet" href="flappy.css?v=4.7.4"></head><body>
+<section id="auth" class="auth-layout">
+<div class="auth-form-wrap"><div class="auth-card">
+<a class="login-logo" href="./" aria-label="hungstrikes"><img class="login-brand-image" src="logo.png" alt="Logo hungstrikes"><span>hungstrikes</span></a>
+<h2 id="authTitle">Đăng nhập</h2><p id="authIntro" hidden></p>
+<form id="authForm">
+<label id="nameLabel" hidden><span class="sr-only">Họ và tên</span><input id="fullName" maxlength="60" autocomplete="name" placeholder="Họ và tên"></label>
+<label><span class="sr-only">Email</span><input id="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" required placeholder="Email"></label>
+<label><span class="sr-only">Mật khẩu</span><div class="password-row"><input id="password" type="password" autocomplete="current-password" minlength="8" required placeholder="Mật khẩu"><button id="showPassword" type="button" class="text-btn" aria-label="Hiện hoặc ẩn mật khẩu">Hiện</button></div></label>
+<label class="remember"><input type="checkbox" id="rememberMe" checked> Ghi nhớ đăng nhập trên thiết bị này</label>
+<button id="authSubmit" class="primary" type="submit">Đăng nhập</button>
+<button id="forgot" type="button" class="text-btn">Quên mật khẩu?</button>
+</form>
+<form id="otpForm" hidden>
+<p id="otpInfo" class="status"></p>
+<label><span class="sr-only">Mã xác nhận</span><input id="otpCode" inputmode="numeric" autocomplete="one-time-code" maxlength="10" required placeholder="Nhập mã số trong email"></label>
+<button id="otpSubmit" class="primary" type="submit">Xác nhận</button>
+<button id="otpResend" type="button" class="text-btn">Gửi lại mã</button>
+<button id="otpBack" type="button" class="text-btn">Quay lại</button>
+</form>
+<p id="authStatus" class="status" role="status"></p>
+<div class="login-divider"><span>hoặc</span></div>
+<button id="signupTab" class="create-account" type="button">Tạo tài khoản mới</button>
+<button id="loginTab" class="create-account" type="button" hidden>Đã có tài khoản? Đăng nhập</button>
+<div class="preview-access"><span id="setupNote" hidden>Chưa bật đăng nhập</span></div>
+</div></div>
+<footer class="login-footer">HUNGKNGU</footer>
+</section>
+<section id="app" hidden><header class="topbar"><a class="brand" href="./"><span class="brand-mark">∞</span> chuỗi</a><span id="connection" class="connection" role="status">Đang kết nối</span><button id="topAvatar" class="avatar-button" aria-label="Mở hồ sơ"></button></header><div id="demoBanner" class="demo-banner" hidden>BẢN XEM THỬ · Dữ liệu chỉ lưu trên thiết bị <button id="exitDemo">Thoát</button></div>
+<main class="app-main"><section id="homePage" class="page"><div id="syncWarning" class="notice" hidden><p id="syncError"></p><div class="flex"><button id="retrySync" class="secondary">Thử đồng bộ lại</button><button id="exportDraft" class="secondary">Xuất bản nháp</button><button id="reloadCloud" class="secondary">Tải bản trên máy chủ</button></div></div><iframe id="tracker" title="Lịch và chuỗi cá nhân" allow="camera" referrerpolicy="same-origin"></iframe></section>
+<section id="friendsPage" class="page" hidden><h1 class="page-title">Bạn bè</h1><div class="panel invite"><div><small>MÃ KẾT BẠN CỦA BẠN</small><strong id="myCode"></strong></div><div class="invite-btns"><button id="copyCode" class="secondary">Sao chép</button><button id="shareInvite" class="primary">Chia sẻ</button></div></div><form id="findForm" class="search-row"><input id="friendCode" aria-label="Mã kết bạn" placeholder="Nhập mã bạn bè, ví dụ ABCD-EFGH" maxlength="13" autocomplete="off" autocapitalize="characters" spellcheck="false" required><button class="primary">Tìm bạn</button></form><div id="searchResult"></div><div class="section-title"><h2>Lời mời & bạn bè</h2><button id="refreshFriends" class="text-btn">Làm mới ↻</button></div><div id="friendsList"></div></section>
+<section id="chatPage" class="page" hidden><div class="chat-layout"><aside class="chat-side"><h1 class="page-title">Đoạn chat</h1><div class="chat-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="chatSearch" type="search" placeholder="Tìm kiếm" aria-label="Tìm cuộc trò chuyện" autocomplete="off"></div><div id="chatList" class="chat-list"></div></aside><div id="thread" class="thread"><div class="empty"><span><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg></span><h2>Chọn một người bạn</h2><p>Nhắn tin, gõ /chiase để khoe chuỗi của bạn.</p></div></div></div></section>
+<section id="profilePage" class="page" hidden>
+<div class="fb-profile">
+<div id="profCover" class="cover"><span class="cover-tag">KỶ LUẬT LÀ SỨC MẠNH</span><button id="coverBtn" class="cover-btn" type="button">🎨 Đổi màu bìa</button></div>
+<div class="prof-head"><div class="prof-avatar-wrap"><button id="profileAvatar" class="large-avatar" type="button" aria-label="Thay ảnh đại diện"></button><button id="changeAvatar" class="cam-badge" type="button" aria-label="Đổi ảnh đại diện"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 10 3h4l2 2h4a2 2 0 0 1 2 2v12H2V7a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12" r="4"/></svg></button><input id="avatarInput" type="file" accept="image/jpeg,image/png,image/webp" hidden></div>
+<div class="prof-id"><h1 id="profName"></h1><p class="prof-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 8 8 6 8-6"/></svg><span id="profEmail"></span></p><p id="profJoined" class="prof-sub"></p></div></div>
+<div class="prof-actions"><button id="editProfile" class="primary" type="button">✎ Chỉnh sửa</button><button id="shareCode" class="secondary" type="button">Sao chép mã kết bạn</button></div>
+<div class="prof-stats"><div><b id="stDays">0</b><small>Chuỗi hiện tại</small></div><div><b id="stBest">0</b><small>Kỷ lục</small></div><div><b id="stFails">0</b><small>Thất bại</small></div><div><b id="stFriends">0</b><small>Bạn bè</small></div></div>
+</div>
+<div id="editPanel" class="panel" hidden><h2>Chỉnh sửa trang cá nhân</h2><form id="profileForm"><label>Tên của bạn<input id="profileName" maxlength="60" required autocomplete="name"></label><p class="fine">Email là tài khoản đăng nhập nên không đổi ở đây. Chạm vào ảnh để thay ảnh đại diện.</p><div class="flex"><button type="button" id="cancelEdit" class="secondary">Hủy</button><button class="primary">Lưu thay đổi</button></div></form></div>
+<div class="panel"><div class="section-title in-panel"><h2>Bạn bè <span id="friendsCount" class="muted"></span></h2><button id="seeFriends" class="text-btn" type="button">Xem tất cả</button></div><div id="profFriends" class="pf-grid"></div></div>
+<div class="panel bk" id="backupPanel"><h2>Sao lưu dữ liệu</h2>
+<div id="bkSt" class="bk-st"><i></i><span id="bkStT"></span></div>
+<h3 class="bk-h">☁️ Đám mây</h3>
+<p class="muted">Lưu bản sao an toàn trên máy chủ. Giữ mã khôi phục để lấy lại dữ liệu trên bất kỳ máy nào. Luôn giữ 5 bản gần nhất.</p>
+<button id="bkCloud" class="bk-main" type="button">Sao lưu lên đám mây ngay</button>
+<p id="bkMsg" class="bk-msg" role="status"></p>
+<div id="bkCode" class="bk-code" hidden><span>MÃ</span><code id="bkCodeV"></code><button id="bkCopy" type="button" class="text-btn">Sao chép</button></div>
+<label class="bk-auto"><input type="checkbox" id="bkAuto"> Tự động sao lưu mỗi ngày</label>
+<h3 class="bk-h">↻ Khôi phục từ mã</h3>
+<div class="bk-row"><input id="bkIn" placeholder="XXXX-XXXX-XXXX" maxlength="16" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Mã khôi phục"><button id="bkFind" class="secondary" type="button">Tìm</button></div>
+<div id="bkVers"></div>
+<div id="bkCf" class="bk-cf" hidden><div id="bkCfT"></div><div class="bk-row two"><button id="bkNo" class="secondary" type="button">Huỷ</button><button id="bkYes" class="primary" type="button">Khôi phục</button></div></div>
+<button id="bkUndo" class="text-btn" type="button" hidden>↶ Hoàn tác lần khôi phục vừa rồi</button>
+<h3 class="bk-h">⇩ File trên thiết bị</h3>
+<p class="muted">Tải một file sao lưu về máy, hoặc mở lại file đã lưu.</p>
+<div class="bk-row two"><button id="bkDown" class="secondary" type="button">Tải file sao lưu</button><button id="bkUp" class="secondary" type="button">Mở file sao lưu</button></div>
+<input type="file" id="bkFile" accept="application/json,.json" hidden>
+<p class="fine bk-reset-note">Chỉ xoá dữ liệu chuỗi (ngày, ảnh, ghi chú, lịch, mục tiêu). Bạn bè, tin nhắn, nhóm và tài khoản được giữ nguyên.</p>
+<button id="bkReset" class="text-btn danger wide bk-reset" type="button">Xoá dữ liệu chuỗi</button>
+</div>
+<button id="adminOpen" class="secondary wide" hidden>Quản trị · quản lý người dùng →</button><button id="logout" class="text-btn danger wide">Đăng xuất</button><p class="maker center">NHÀ SÁNG TẠO <b>HUNGKNGU</b></p></section>
+<section id="adminPage" class="page" hidden><h1 class="page-title">Quản lý người dùng</h1><p class="muted">Chỉ hiển thị tài khoản đã xác nhận email và đăng nhập ít nhất một lần. Tài khoản tạm khóa vẫn hiện để có thể mở khóa. Không truy cập tin nhắn, ảnh hay ghi chú riêng.</p><p id="adminFilterStatus" class="fine" role="status"></p><div id="adminStats" class="panel"></div><form id="adminSearch" class="search-row"><input id="adminQuery" placeholder="Tìm theo tên, email hoặc mã" aria-label="Tìm người dùng"><select id="adminSort" aria-label="Sắp xếp"><option value="new">Mới nhất</option><option value="streak">Chuỗi dài nhất</option><option value="friends">Nhiều bạn nhất</option><option value="active">Hoạt động gần đây</option><option value="inactive">Lâu không hoạt động</option></select><button class="primary">Tìm</button></form><div class="flex"><button id="adminExport" type="button" class="secondary">Xuất CSV</button></div><div id="adminUsers"></div><div class="flex"><button id="adminPrev" class="secondary">← Trước</button><span id="adminPageNumber"></span><button id="adminNext" class="secondary">Sau →</button></div></section></main>
+<nav class="bottom-nav" aria-label="Điều hướng chính"><button data-page="home" class="active"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 9h18M9 9v12"/></svg>Chuỗi</button><button data-page="friends"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6M21 21v-3a5 5 0 0 0-4-5"/></svg>Bạn bè</button><div class="nav-mid"><button id="captureBtn" class="nav-capture" type="button" aria-haspopup="dialog" aria-label="Chụp hoặc tải ảnh hôm nay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 10 3h4l2 2h4a2 2 0 0 1 2 2v12H2V7a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12" r="4"/></svg></button></div><button data-page="chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-1 1v-9.5A8.5 8.5 0 0 1 21 11.5Z"/><path d="M7 10h10M7 14h6"/></svg>Chat<i id="chatBadge" class="nav-badge" hidden></i></button><button data-page="profile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M5 19a7 7 0 0 1 14 0"/></svg>Cá nhân</button></nav>
+<div id="sheet" class="sheet" hidden><div class="sheet-backdrop" data-close></div><div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><div class="sheet-grip"></div><h2 id="sheetTitle">Thêm ảnh hôm nay</h2><button id="sheetCamera" class="sheet-opt" type="button"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 10 3h4l2 2h4a2 2 0 0 1 2 2v12H2V7a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12" r="4"/></svg></span><span><b>Chụp ảnh</b><small>Mở camera, chụp ngay</small></span></button><button id="sheetUpload" class="sheet-opt alt" type="button"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 17 6-6 4 4 3-3 5 5"/><circle cx="16" cy="8" r="1"/></svg></span><span><b>Tải ảnh lên</b><small>Chọn ảnh có sẵn</small></span></button><button id="sheetCancel" class="sheet-cancel" type="button" data-close>Hủy</button></div></div><input id="photoFile" type="file" accept="image/*" multiple hidden></section><div id="toast" role="status" hidden></div>
+<dialog id="resetDialog"><form id="resetForm"><h2>Đặt mật khẩu mới</h2><label>Mật khẩu mới<input id="newPassword" type="password" minlength="8" required autocomplete="new-password"></label><button class="primary">Lưu mật khẩu</button><button type="button" id="cancelReset" class="text-btn">Đóng</button></form></dialog></body></html>
